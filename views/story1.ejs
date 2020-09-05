@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <title>The beautiful love</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+    <style>
+        .center {
+            /* margin: auto; */
+            margin-left: auto; margin-right: auto;
+            width: 60%;
+            /* border: 3px solid green; */
+            padding: 0px;
+        }
+        .jumbotron span{
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-top: 2rem;">
+        <div class="jumbotron center" style="border: 2px solid red;">
+            <span><center><i class="fa fa-camera-retro"></i>Latest Stories</center></span>
+            <!-- <p>The students who have achieved success and have done great! :)></p>  -->
+        </div>
+    </div>
+    <div class="center" style="display: flex; flex-wrap: wrap; margin-top: -2rem; height: 89rem; background-color: lightgray;">
+        <div style="padding: 2rem; text-align: justify; font-size: 1.5rem;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+                <div style="font-weight: 620; height: 4rem; width: 40%; border: 2px solid red; font-size: 2.2rem;">
+                    Current viewers: <span id="live1"></span>
+                </div>
+                <div style="text-align: right; font-weight: 620; height: 4rem; width: 40%; font-size: 2.2rem; border: 2px solid yellow;">
+                    Total Viewers: <span id="total1"></span>
+                </div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap;">
+                <p>
+                    Rich and I were high school sweethearts, dating all the way until we decided to go to college in different states—California for him and Virginia for me. Yet even though we had broken up, I still thought about him. When we reconnected in 2018, the sparks flew, all my doubts were gone, and I knew for sure this was the man I wanted to spend the rest of my life with. We got engaged nine months later on June 23, 2019. While that may seem quick to some people, really we’d been preparing for this since the eleventh grade!</br></br>
+                    We planned our dream wedding: a beautiful flower-strewn ceremony in front of nearly 200 of our friends and family in San Diego, followed by a grand reception and then off on our honeymoon. The date we picked was April 18, which was right smack dab in the middle of the coronavirus pandemic. We live in California so we were among the first Americans to be put under a shelter-in-place in order. It was just three weeks before our wedding yet we weren’t even supposed to go out to eat, much less have a huge party. We had to cancel our wedding. Find out how event planners cancel major live events.</br></br>
+                    There was another complicating factor. Rich and I are both medical workers. I’m an ER nurse and he’s an intensive care unit (ICU) tech. We were told to prepare to work extra hours caring for an onslaught of COVID-19 patients. Between worrying about the pandemic and our canceled wedding, it was a very scary and frustrating time. While things were ramping up on the West Coast, the pandemic was in full swing on the East Coast—read this New York City nurse’s account of working on the coronavirus frontlines.</br></br>
+                    Then, on April 11, one week before our would-be wedding date, my roommate Bethany told me we needed to talk. “So I did something last night…,” she started. That thing was a tweet asking for help for two healthcare workers in love to get married and she tagged a bunch of celebrities including Ellen Degeneres, Dax Shepherd, Kristin Bell, and best selling author Bob Goff (his latest book Dream Big is set to be released on June 20) who is also a philanthropist and honorary consul of Uganda.</br></br>
+                    “…and Bob Goff messaged me this morning, he wants to help you,” Bethany concluded.
+                    I sat there stunned and surprised—and part of me even wondered if it was a prank. But once Rich and I talked to him on the phone, we realized he was just as excited about our wedding as we were and he had the perfect way to do it without breaking quarantine rules. When we asked him why he wanted to throw a wedding for strangers in the middle of a pandemic, he simply said he wanted to thank us for our service and spread kindness and love.</br>Over the next week we worked with Bob and his wife, transforming our dream wedding into something even better than we had envisioned. On April 18, I put on my beautiful wedding dress, and Rich and I walked down a rose-petal-strewn dock. We exchanged vows on Bob’s boat, in front of our families who were each positioned on nearby but separate piers. From the flowers to the decorative flags on the boat to the photographer, every detail was perfect.</br></br>
+
+                    Afterward, my mom coordinated a “drive-by reception.” She decorated the driveway and after our first dance (yes, on the driveway!) all our loved ones lined up in their cars to drive by and wish us well. A neighbor even lit off fireworks to add to the festivity.</br></br>
+                    
+                    My wedding wasn’t at all as I’d first planned but through some creativity and the generosity of a wonderful stranger, it turned out better than I ever could have imagined. Bob’s gift was the best wedding present. Someday Rich and I hope to take our dream honeymoon trip. In the meantime, we are so grateful to be able to start our life together happy, healthy, and with such a great story.
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+<script type="text/javascript">
+    console.log(window.location.pathname);
+    if(window.location.pathname === '/story1'){
+        var socket = io.connect('http://localhost:7777');
+        socket.on('message', function (data) {
+            console.log(data.count);
+            $("#live1").text(data.count);
+        });
+    }
+</script>
+
+</html>
