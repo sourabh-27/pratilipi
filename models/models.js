@@ -18,6 +18,21 @@ const userSchema = new mongoose.Schema({
     }],
     story1 : {
         type : Boolean
+    },
+    story2 : {
+        type: Boolean
+    },
+    story3 : {
+        type: Boolean
+    },
+    story4 : {
+        type: Boolean
+    },
+    story5 : {
+        type: Boolean
+    },
+    story6 : {
+        type: Boolean
     }
 });
 
